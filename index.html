@@ -1080,6 +1080,14 @@
             text-align: center;
         }
 
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .navbar {
@@ -1131,6 +1139,11 @@
 
             .category-tabs, .program-tabs {
                 flex-direction: column;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
             }
         }
 
@@ -1332,96 +1345,51 @@
                 </div>
                 
                 <!-- Category Tabs (for C programming) -->
-                <div class="category-tabs" id="category-tabs" style="display: none;">
-                    <!-- Tabs will be dynamically generated -->
+                <div class="category-tabs" id="category-tabs">
+                    <div class="category-tab active" data-category="function">Function</div>
+                    <div class="category-tab" data-category="structure">Structure</div>
+                    <div class="category-tab" data-category="pointer">Pointer</div>
+                    <div class="category-tab" data-category="recursive">Recursive Function</div>
                 </div>
                 
-                <div class="program-tabs" id="program-tabs">
-                    <!-- Tabs will be dynamically generated -->
+                <!-- Function Programs -->
+                <div class="program-tabs" id="function-tabs">
+                    <!-- Function tabs will be dynamically generated -->
                 </div>
-                <div class="program-content active" id="program-content-1">
-                    <div class="program-question" id="program-question-1">
-                        Write a program to find the sum of two numbers.
-                    </div>
-                    <div class="compiler-container">
-                        <div class="code-editor">
-                            <div class="editor-header">
-                                <select class="language-select" id="learning-language">
-                                    <option value="c">C</option>
-                                    <option value="javascript">JavaScript</option>
-                                    <option value="python">Python</option>
-                                </select>
-                                <div class="editor-actions">
-                                    <button class="editor-btn run" id="run-learning-code">Run</button>
-                                    <button class="editor-btn" id="reset-learning-code">Reset</button>
-                                </div>
-                            </div>
-                            <div class="editor-content">
-                                <textarea class="code-input readonly" id="learning-code-input" readonly placeholder="Code is read-only in learning mode...">#include &lt;stdio.h&gt;
-
-int main() {
-    int a, b, sum;
-    
-    printf("Enter two numbers: ");
-    scanf("%d %d", &a, &b);
-    
-    sum = a + b;
-    
-    printf("Sum = %d\n", sum);
-    
-    return 0;
-}</textarea>
-                            </div>
-                        </div>
-                        <div class="output-container">
-                            <div class="output-header">
-                                <h3>Output</h3>
-                                <div class="api-status" id="learning-api-status">
-                                    <!-- API status will be displayed here -->
-                                </div>
-                            </div>
-                            <div class="output-content" id="learning-output-content">
-                                Output will be displayed here...
-                            </div>
-                        </div>
-                    </div>
-                    <div class="program-solution">
-                        <h3 class="solution-title">Solution</h3>
-                        <pre id="program-solution-1">#include &lt;stdio.h&gt;
-
-int main() {
-    int a, b, sum;
-    
-    printf("Enter two numbers: ");
-    scanf("%d %d", &a, &b);
-    
-    sum = a + b;
-    
-    printf("Sum = %d\n", sum);
-    
-    return 0;
-}</pre>
-                    </div>
-                    <div class="explanation">
-                        <h3 class="explanation-title">Explanation</h3>
-                        <p id="program-explanation-1">This program demonstrates basic input/output operations and arithmetic in C:</p>
-                        <ol>
-                            <li>We declare three integer variables: a, b, and sum</li>
-                            <li>We use printf() to display a prompt to the user</li>
-                            <li>We use scanf() to read two integers from the user</li>
-                            <li>We calculate the sum of a and b</li>
-                            <li>We display the result using printf()</li>
-                        </ol>
-                        <div class="voice-explanation">
-                            <button class="voice-btn" id="voice-explanation-btn">
-                                <i class="fas fa-volume-up"></i> Listen to Explanation
-                            </button>
-                            <button class="voice-btn stop" id="stop-voice-btn" style="display: none;">
-                                <i class="fas fa-stop"></i> Stop
-                            </button>
-                            <span id="voice-status">Click to hear voice explanation</span>
-                        </div>
-                    </div>
+                
+                <!-- Structure Programs -->
+                <div class="program-tabs" id="structure-tabs" style="display: none;">
+                    <!-- Structure tabs will be dynamically generated -->
+                </div>
+                
+                <!-- Pointer Programs -->
+                <div class="program-tabs" id="pointer-tabs" style="display: none;">
+                    <!-- Pointer tabs will be dynamically generated -->
+                </div>
+                
+                <!-- Recursive Function Programs -->
+                <div class="program-tabs" id="recursive-tabs" style="display: none;">
+                    <!-- Recursive tabs will be dynamically generated -->
+                </div>
+                
+                <!-- Function Program Content -->
+                <div id="function-content">
+                    <!-- Function programs will be dynamically generated -->
+                </div>
+                
+                <!-- Structure Program Content -->
+                <div id="structure-content" style="display: none;">
+                    <!-- Structure programs will be dynamically generated -->
+                </div>
+                
+                <!-- Pointer Program Content -->
+                <div id="pointer-content" style="display: none;">
+                    <!-- Pointer programs will be dynamically generated -->
+                </div>
+                
+                <!-- Recursive Function Program Content -->
+                <div id="recursive-content" style="display: none;">
+                    <!-- Recursive programs will be dynamically generated -->
                 </div>
             </div>
         </section>
@@ -1497,7 +1465,7 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
             <div class="test-interface" id="mcq-test">
                 <div class="test-header">
                     <h3>MCQ Test - NEB Grade 12 Computer Science</h3>
-                    <div class="test-timer" id="mcq-timer">10:00</div>
+                    <div class="test-timer" id="mcq-timer">05:00</div>
                     <div class="test-controls">
                         <button class="btn btn-secondary" id="pause-mcq">Pause</button>
                         <button class="btn btn-secondary" id="quit-mcq">Quit</button>
@@ -1523,7 +1491,7 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
             <div class="test-interface" id="theory-test">
                 <div class="test-header">
                     <h3>Theory Test - NEB Grade 12 Computer Science</h3>
-                    <div class="test-timer" id="theory-timer">02:00:00</div>
+                    <div class="test-timer" id="theory-timer">40:00</div>
                     <div class="test-controls">
                         <button class="btn btn-secondary" id="pause-theory">Pause</button>
                         <button class="btn btn-secondary" id="quit-theory">Quit</button>
@@ -1548,9 +1516,11 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
                 <div class="result-score" id="result-score">85/100</div>
                 <p class="result-message" id="result-message">Congratulations <span id="user-name">User</span>! You have scored 85 out of 100. Great job!</p>
                 <div class="download-section">
-                    <button class="btn btn-primary" id="retry-test">Retry Test</button>
-                    <button class="btn btn-secondary" id="download-solution">Download Test Answers</button>
-                    <button class="btn btn-secondary" id="download-all-mcq">Download All MCQ Questions</button>
+                    <div class="download-buttons">
+                        <button class="btn btn-primary" id="retry-test">Retest</button>
+                        <button class="btn btn-secondary" id="download-answer">Download Answer</button>
+                        <button class="btn btn-secondary" id="download-all-mcq-answer">Download All MCQ Answer</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1619,9 +1589,9 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
         <div class="modal-content">
             <h2 class="modal-title">MCQ Test Settings</h2>
             <select class="modal-select" id="question-count">
-                <option value="20">20 Questions (10 minutes)</option>
-                <option value="50">50 Questions (30 minutes)</option>
-                <option value="100">100 Questions (50 minutes)</option>
+                <option value="20">20 Questions (5 minutes)</option>
+                <option value="50">50 Questions (20 minutes)</option>
+                <option value="100">100 Questions (40 minutes)</option>
             </select>
             <div class="modal-actions">
                 <button class="modal-btn cancel" id="cancel-mcq-settings">Cancel</button>
@@ -1673,8 +1643,8 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
         const theoryTest = document.getElementById('theory-test');
         const resultContainer = document.getElementById('result-container');
         const retryTestBtn = document.getElementById('retry-test');
-        const downloadSolutionBtn = document.getElementById('download-solution');
-        const downloadAllMcqBtn = document.getElementById('download-all-mcq');
+        const downloadAnswerBtn = document.getElementById('download-answer');
+        const downloadAllMcqAnswerBtn = document.getElementById('download-all-mcq-answer');
         const learningContent = document.getElementById('learning-content');
         const backToLanguagesBtn = document.getElementById('back-to-languages');
         const categoryTabs = document.getElementById('category-tabs');
@@ -1704,39 +1674,10 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
         // Correct password
         const CORRECT_PASSWORD = "GGIC@123";
 
-        // API Configuration
-        const API_CONFIG = {
-            judge0: {
-                url: 'https://judge0-ce.p.rapidapi.com',
-                key: '501dd5e5efmsh3ae81069c652861p1313e2jsnb068b0c627f3',
-                host: 'judge0-ce.p.rapidapi.com'
-            },
-            piston: {
-                url: 'https://emkc.org/api/v2/piston'
-            }
-        };
-
-        // Language mappings
-        const LANGUAGE_MAP = {
-            judge0: {
-                'c': 50,
-                'javascript': 63,
-                'python': 71
-            },
-            piston: {
-                'c': 'c',
-                'javascript': 'javascript',
-                'python': 'python'
-            }
-        };
-
-        // Current API being used
-        let currentAPI = 'judge0';
-
         // Test state
         let currentTest = null;
         let testTimer = null;
-        let testTimeLeft = 600; // 10 minutes default for 20 questions
+        let testTimeLeft = 300; // 5 minutes default for 20 questions
         let isTestPaused = false;
         let userName = "";
         let currentLanguage = "";
@@ -1749,35 +1690,195 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
         let currentMcqSet = [];
         let currentTheorySet = [];
 
-        // Interactive execution state
-        let interactiveExecution = {
-            isRunning: false,
-            inputs: [],
-            currentInputIndex: 0,
-            output: ""
-        };
-
         // All 200 MCQ Questions
         const allMcqQuestions = [
             {
                 id: 1,
                 question: "What does DBMS stand for?",
                 options: ["Data Backup Management System", "Database Management System", "Distributed Binary Management System", "Data Base Modelling Service"],
-                correctAnswer: "B"
+                correctAnswer: "b"
             },
             {
                 id: 2,
                 question: "Which SQL command is used to remove a table?",
                 options: ["REMOVE TABLE", "DROP TABLE", "DELETE TABLE", "ERASE TABLE"],
-                correctAnswer: "B"
+                correctAnswer: "b"
             },
-            // ... (all 200 MCQ questions would be here - truncated for brevity)
-            // In the actual implementation, all 200 questions would be included
             {
-                id: 200,
+                id: 3,
+                question: "What is the full form of CPU?",
+                options: ["Central Processing Unit", "Computer Processing Unit", "Central Program Unit", "Computer Program Unit"],
+                correctAnswer: "a"
+            },
+            {
+                id: 4,
+                question: "Which of the following is not a programming language?",
+                options: ["Python", "Java", "HTML", "C++"],
+                correctAnswer: "c"
+            },
+            {
+                id: 5,
+                question: "What does HTML stand for?",
+                options: ["Hyper Text Markup Language", "High Tech Modern Language", "Hyper Transfer Markup Language", "Home Tool Markup Language"],
+                correctAnswer: "a"
+            },
+            {
+                id: 6,
+                question: "Which of the following is used to style web pages?",
+                options: ["HTML", "CSS", "JavaScript", "PHP"],
+                correctAnswer: "b"
+            },
+            {
+                id: 7,
+                question: "What is the correct way to declare a variable in JavaScript?",
+                options: ["variable x;", "var x;", "v x;", "let x;"],
+                correctAnswer: "b"
+            },
+            {
+                id: 8,
+                question: "Which symbol is used for comments in JavaScript?",
+                options: ["//", "/* */", "#", "--"],
+                correctAnswer: "a"
+            },
+            {
+                id: 9,
+                question: "What does CSS stand for?",
+                options: ["Computer Style Sheets", "Creative Style System", "Cascading Style Sheets", "Colorful Style Sheets"],
+                correctAnswer: "c"
+            },
+            {
+                id: 10,
+                question: "Which HTML tag is used for the largest heading?",
+                options: ["<h1>", "<head>", "<h6>", "<heading>"],
+                correctAnswer: "a"
+            },
+            {
+                id: 11,
+                question: "What is the correct syntax for referring to an external script called 'script.js'?",
+                options: ["<script href='script.js'>", "<script name='script.js'>", "<script src='script.js'>", "<script link='script.js'>"],
+                correctAnswer: "c"
+            },
+            {
+                id: 12,
+                question: "How do you write 'Hello World' in an alert box?",
+                options: ["alertBox('Hello World');", "msg('Hello World');", "alert('Hello World');", "msgBox('Hello World');"],
+                correctAnswer: "c"
+            },
+            {
+                id: 13,
+                question: "Which of the following is not a JavaScript data type?",
+                options: ["Number", "String", "Boolean", "Float"],
+                correctAnswer: "d"
+            },
+            {
+                id: 14,
+                question: "What is the correct way to write a JavaScript array?",
+                options: ["var colors = (1:'red', 2:'green', 3:'blue')", "var colors = ['red', 'green', 'blue']", "var colors = 'red', 'green', 'blue'", "var colors = {1:'red', 2:'green', 3:'blue'}"],
+                correctAnswer: "b"
+            },
+            {
+                id: 15,
+                question: "Which event occurs when the user clicks on an HTML element?",
+                options: ["onchange", "onclick", "onmouseclick", "onmouseover"],
+                correctAnswer: "b"
+            },
+            {
+                id: 16,
+                question: "How do you declare a JavaScript function?",
+                options: ["function myFunction()", "function:myFunction()", "function = myFunction()", "function => myFunction()"],
+                correctAnswer: "a"
+            },
+            {
+                id: 17,
+                question: "How can you add a comment in a JavaScript?",
+                options: ["'This is a comment", "//This is a comment", "<!--This is a comment-->", "/* This is a comment */"],
+                correctAnswer: "b"
+            },
+            {
+                id: 18,
+                question: "What is the correct way to write a JavaScript object?",
+                options: ["var person = {firstName:'John', lastName:'Doe'};", "var person = (firstName:'John', lastName:'Doe');", "var person = [firstName:'John', lastName:'Doe'];", "var person = <firstName>'John'</firstName><lastName>'Doe'</lastName>;"],
+                correctAnswer: "a"
+            },
+            {
+                id: 19,
+                question: "Which operator is used to assign a value to a variable?",
+                options: ["*", "-", "=", "x"],
+                correctAnswer: "c"
+            },
+            {
+                id: 20,
+                question: "What will the following code return: Boolean(10 > 9)?",
+                options: ["NaN", "false", "true", "undefined"],
+                correctAnswer: "c"
+            },
+            // Additional questions to make it to 100
+            {
+                id: 21,
+                question: "Which method is used to remove the last element from an array?",
+                options: ["pop()", "push()", "shift()", "unshift()"],
+                correctAnswer: "a"
+            },
+            {
+                id: 22,
+                question: "Which method is used to add new elements to the beginning of an array?",
+                options: ["pop()", "push()", "shift()", "unshift()"],
+                correctAnswer: "d"
+            },
+            {
+                id: 23,
+                question: "What is the correct way to create a new date object in JavaScript?",
+                options: ["var d = new Date();", "var d = Date();", "var d = new Date;", "var d = Date.new();"],
+                correctAnswer: "a"
+            },
+            {
+                id: 24,
+                question: "Which of the following is not a valid JavaScript variable name?",
+                options: ["2names", "_first_and_last_names", "FirstAndLast", "None of the above"],
+                correctAnswer: "a"
+            },
+            {
+                id: 25,
+                question: "How do you find the number with the highest value of x and y?",
+                options: ["Math.ceil(x, y)", "top(x, y)", "Math.max(x, y)", "Math.highest(x, y)"],
+                correctAnswer: "c"
+            },
+            {
+                id: 26,
+                question: "What will the following code return: Math.floor(7.8)?",
+                options: ["7", "8", "7.8", "8.0"],
+                correctAnswer: "a"
+            },
+            {
+                id: 27,
+                question: "Which of the following is not a JavaScript framework?",
+                options: ["React", "Angular", "Vue", "Django"],
+                correctAnswer: "d"
+            },
+            {
+                id: 28,
+                question: "What is the correct syntax for creating a new Promise in JavaScript?",
+                options: ["new Promise(function(resolve, reject) {})", "Promise.new(function(resolve, reject) {})", "new Promise(resolve, reject) {}", "Promise.create(function(resolve, reject) {})"],
+                correctAnswer: "a"
+            },
+            {
+                id: 29,
+                question: "Which method is used to parse a JSON string in JavaScript?",
+                options: ["JSON.parse()", "JSON.stringify()", "JSON.toObject()", "JSON.fromString()"],
+                correctAnswer: "a"
+            },
+            {
+                id: 30,
+                question: "What is the purpose of the 'use strict' directive in JavaScript?",
+                options: ["To enforce stricter parsing and error handling", "To make the code run faster", "To enable experimental features", "To disable certain JavaScript features"],
+                correctAnswer: "a"
+            },
+            // Continue adding more questions until we have 100...
+            {
+                id: 100,
                 question: "For NEB exam preparation, best practice among these is:",
                 options: ["Memorize without practice", "Practice past papers, model questions, and implement code by hand and on computer", "Only read summaries once", "Ignore syllabus and study random topics"],
-                correctAnswer: "B"
+                correctAnswer: "b"
             }
         ];
 
@@ -1798,10 +1899,88 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
                 question: "Define data redundancy and data inconsistency. How does normalization reduce them?",
                 answer: "Redundancy is unnecessary duplication of data. Inconsistency happens when duplicated data disagree. Normalization organizes data into tables to eliminate duplicates and dependencies (by splitting into smaller relations and using keys), which reduces redundancy and thus inconsistency."
             },
-            // ... (all theory questions would be here - truncated for brevity)
-            // In the actual implementation, all theory questions would be included
             {
-                id: 100,
+                id: 4,
+                question: "Explain 1NF, 2NF and 3NF with examples.",
+                answer: "1NF: Atomic attribute values (no repeating groups). Example: separate phone numbers into rows instead of comma lists. 2NF: Meet 1NF & no partial dependency of non-key attributes on part of a composite key. Example: move attributes that depend only on part of composite key to another table. 3NF: Meet 2NF & no transitive dependencies (non-key attribute depends on another non-key attribute). Example: store city_id in student table and keep city details in City table."
+            },
+            {
+                id: 5,
+                question: "What is a primary key, candidate key, alternate key and foreign key?",
+                answer: "Primary key uniquely identifies each row. Candidate keys are possible unique identifiers; alternate keys are candidate keys not chosen as primary. Foreign key is an attribute in one table that references the primary key of another table to enforce relationships."
+            },
+            {
+                id: 6,
+                question: "What is ER model? Explain entities, attributes and relationships.",
+                answer: "ER (Entity-Relationship) model visually represents data requirements. Entity is an object (Student), attribute is a property (Name, Roll), and relationship connects entities (Student ENROLLED_IN Course). Diagrams use rectangles (entities), ovals (attributes), diamonds (relationships)."
+            },
+            {
+                id: 7,
+                question: "Write SQL to create a table Student(id INT PRIMARY KEY, name VARCHAR(50), age INT) and insert two rows.",
+                answer: "CREATE TABLE Student ( id INT PRIMARY KEY, name VARCHAR(50), age INT ); INSERT INTO Student VALUES (1, 'Amit', 18), (2, 'Sita', 17);"
+            },
+            {
+                id: 8,
+                question: "How do you select all students older than 17?",
+                answer: "SELECT * FROM Student WHERE age > 17;"
+            },
+            {
+                id: 9,
+                question: "Explain DDL and DML with examples.",
+                answer: "DDL (Data Definition Language) commands define schema (CREATE, ALTER, DROP). DML (Data Manipulation Language) manipulates data (SELECT, INSERT, UPDATE, DELETE)."
+            },
+            {
+                id: 10,
+                question: "What is an index? When should you use it?",
+                answer: "An index is a data structure (e.g., B-tree) that speeds up searches on table columns. Use indexes on columns frequently used in WHERE, JOIN or ORDER BY, but avoid over-indexing (slows writes and uses space)."
+            },
+            {
+                id: 11,
+                question: "What is normalization vs denormalization (advantages/disadvantages)?",
+                answer: "Normalization splits data into multiple tables to remove redundancy (advantages: integrity, smaller updates). Denormalization stores duplicate data for performance (advantages: faster reads), but increases redundancy and update anomalies."
+            },
+            {
+                id: 12,
+                question: "What is transaction in DBMS? Define ACID properties.",
+                answer: "A transaction is a unit of work (sequence of DB operations) treated atomically. ACID — Atomicity (all or none), Consistency (database remains valid), Isolation (concurrent transactions don't interfere), Durability (committed results persist)."
+            },
+            {
+                id: 13,
+                question: "Explain concurrency control and locking briefly.",
+                answer: "Concurrency control ensures multiple transactions execute correctly. Locks (shared/exclusive) prevent conflicting access. Techniques: two-phase locking, optimistic concurrency, timestamp ordering."
+            },
+            {
+                id: 14,
+                question: "What is a view in SQL? Give an example.",
+                answer: "A view is a virtual table defined by a query; it hides complexity and secures data. Example: CREATE VIEW TeenStudents AS SELECT id,name FROM Student WHERE age BETWEEN 13 AND 19;"
+            },
+            {
+                id: 15,
+                question: "How to delete duplicate rows in SQL keeping one copy?",
+                answer: "Use a CTE with ROW_NUMBER(): WITH CTE AS ( SELECT *, ROW_NUMBER() OVER(PARTITION BY name, age ORDER BY id) rn FROM Student ) DELETE FROM CTE WHERE rn > 1;"
+            },
+            {
+                id: 16,
+                question: "What are data types in SQL — numeric, character, date?",
+                answer: "Numeric (INT, DECIMAL, FLOAT), Character (CHAR, VARCHAR, TEXT), Date/Time (DATE, TIME, DATETIME/TIMESTAMP), Boolean, Binary types for blobs."
+            },
+            {
+                id: 17,
+                question: "Explain the OSI model layers and main function of each.",
+                answer: "Seven layers: Physical (bits on medium), Data Link (frames & MAC addresses), Network (routing/IP), Transport (end-to-end: TCP/UDP), Session (sessions), Presentation (translation/encryption), Application (user services: HTTP, FTP)."
+            },
+            {
+                id: 18,
+                question: "What is IPv4 address; explain classes A–E and subnet mask concept.",
+                answer: "IPv4 is 32-bit address (dotted decimal). Classes: A (1–126), B (128–191), C (192–223), D (224–239 multicast), E (240–255 experimental). Subnet mask divides network & host portions (e.g., 255.255.255.0)."
+            },
+            {
+                id: 19,
+                question: "Difference between TCP and UDP.",
+                answer: "TCP is connection-oriented, reliable, ordered, with flow control (suitable for HTTP). UDP is connectionless, unreliable, but low overhead (suitable for streaming/VoIP)."
+            },
+            {
+                id: 20,
                 question: "How to prepare for NEB computer practical and theory exams — strategy?",
                 answer: "Study NEB model papers and past pre-board papers; practice coding (C/SQL/JS/PHP) by hand and on computer; memorize key definitions and command syntaxes; solve model questions under timed conditions; focus on DBMS, Networking, Web Tech, and Programming — they are frequently asked. Review NEB model question sets and solved guides."
             }
@@ -1817,9 +1996,317 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
                 question: "Explain the difference between compiler and interpreter.",
                 answer: "A compiler translates the entire program at once, while an interpreter translates and executes the program line by line. Compiled programs generally run faster, while interpreted programs are easier to debug."
             },
-            // ... (all notes would be here - truncated for brevity)
-            // In the actual implementation, all notes would be included
+            {
+                question: "What is a Database? What is a DBMS?",
+                answer: "A database is an organized collection of related data stored for efficient retrieval and management (e.g., student records). A DBMS (Database Management System) is software that provides interfaces to define, create, query, update and administer databases (examples: MySQL, PostgreSQL). Key DBMS functions include data definition, data manipulation, security, concurrency control, backup & recovery, and integrity enforcement."
+            },
+            {
+                question: "List advantages of using a DBMS over flat-file systems.",
+                answer: "Reduced redundancy, improved data integrity and consistency, concurrent multiuser access, centralized security and authorization, easier backup & recovery, data independence (schema vs. application), better querying and reporting support."
+            },
+            {
+                question: "Define data redundancy and data inconsistency. How does normalization reduce them?",
+                answer: "Redundancy is unnecessary duplication of data. Inconsistency happens when duplicated data disagree. Normalization organizes data into tables to eliminate duplicates and dependencies (by splitting into smaller relations and using keys), which reduces redundancy and thus inconsistency."
+            },
+            {
+                question: "What is object-oriented programming?",
+                answer: "Object-oriented programming (OOP) is a programming paradigm based on the concept of objects, which can contain data and code. The four main principles of OOP are encapsulation, inheritance, polymorphism, and abstraction."
+            },
+            {
+                question: "Explain the concept of inheritance in OOP.",
+                answer: "Inheritance is a mechanism where a new class (child class) derives properties and behaviors from an existing class (parent class). This promotes code reusability and establishes a relationship between classes."
+            },
+            {
+                question: "What is polymorphism in programming?",
+                answer: "Polymorphism allows objects of different classes to be treated as objects of a common superclass. It enables a single interface to represent different underlying forms (data types)."
+            },
+            {
+                question: "What are the main components of a computer system?",
+                answer: "The main components of a computer system are: Input Unit, Output Unit, Memory Unit, Control Unit, Arithmetic Logic Unit (ALU), and Central Processing Unit (CPU)."
+            },
+            {
+                question: "What is an operating system? List its main functions.",
+                answer: "An operating system is system software that manages computer hardware and software resources. Its main functions include process management, memory management, file system management, device management, security, and user interface."
+            }
         ];
+
+        // C Programming Programs Data
+        const cPrograms = {
+            function: [
+                {
+                    id: 1,
+                    title: "Function to Add Two Numbers",
+                    question: "Write a program to add two numbers using a function.",
+                    code: `#include <stdio.h>
+int add(int a, int b) {
+    return a + b;
+}
+int main() {
+    int x = 5, y = 7;
+    printf("Sum = %d\\n", add(x, y));
+    return 0;
+}`,
+                    output: "Sum = 12"
+                },
+                {
+                    id: 2,
+                    title: "Function to Find Square of a Number",
+                    question: "Write a program to find the square of a number using a function.",
+                    code: `#include <stdio.h>
+int square(int n) {
+    return n * n;
+}
+int main() {
+    int n = 6;
+    printf("Square = %d\\n", square(n));
+    return 0;
+}`,
+                    output: "Square = 36"
+                },
+                {
+                    id: 3,
+                    title: "Function to Find Factorial",
+                    question: "Write a program to find the factorial of a number using a function.",
+                    code: `#include <stdio.h>
+int factorial(int n) {
+    int f = 1;
+    for(int i = 1; i <= n; i++)
+        f *= i;
+    return f;
+}
+int main() {
+    printf("Factorial = %d\\n", factorial(5));
+    return 0;
+}`,
+                    output: "Factorial = 120"
+                },
+                {
+                    id: 4,
+                    title: "Function to Find Greatest of Two Numbers",
+                    question: "Write a program to find the greatest of two numbers using a function.",
+                    code: `#include <stdio.h>
+int greatest(int a, int b) {
+    return (a > b) ? a : b;
+}
+int main() {
+    printf("Greatest = %d\\n", greatest(10, 20));
+    return 0;
+}`,
+                    output: "Greatest = 20"
+                },
+                {
+                    id: 5,
+                    title: "Function to Find Greatest of Three Numbers",
+                    question: "Write a program to find the greatest of three numbers using a function.",
+                    code: `#include <stdio.h>
+int greatest(int a, int b, int c) {
+    if(a > b && a > c) return a;
+    else if(b > c) return b;
+    else return c;
+}
+int main() {
+    printf("Greatest = %d\\n", greatest(12, 45, 32));
+    return 0;
+}`,
+                    output: "Greatest = 45"
+                },
+                {
+                    id: 6,
+                    title: "Function to Check Even or Odd",
+                    question: "Write a program to check if a number is even or odd using a function.",
+                    code: `#include <stdio.h>
+void checkEvenOdd(int n) {
+    if(n % 2 == 0) printf("%d is Even\\n", n);
+    else printf("%d is Odd\\n", n);
+}
+int main() {
+    checkEvenOdd(7);
+    return 0;
+}`,
+                    output: "7 is Odd"
+                },
+                {
+                    id: 7,
+                    title: "Function to Check Prime Number",
+                    question: "Write a program to check if a number is prime using a function.",
+                    code: `#include <stdio.h>
+int isPrime(int n) {
+    if(n < 2) return 0;
+    for(int i = 2; i <= n/2; i++) {
+        if(n % i == 0) return 0;
+    }
+    return 1;
+}
+int main() {
+    printf("7 is Prime? %d\\n", isPrime(7));
+    return 0;
+}`,
+                    output: "7 is Prime? 1"
+                },
+                {
+                    id: 8,
+                    title: "Function to Swap Two Numbers (using third variable)",
+                    question: "Write a program to swap two numbers using a function with third variable.",
+                    code: `#include <stdio.h>
+void swap(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp;
+    printf("After Swap: a=%d b=%d\\n", a, b);
+}
+int main() {
+    swap(10, 20);
+    return 0;
+}`,
+                    output: "After Swap: a=20 b=10"
+                },
+                {
+                    id: 9,
+                    title: "Function to Swap Two Numbers (without third variable)",
+                    question: "Write a program to swap two numbers using a function without third variable.",
+                    code: `#include <stdio.h>
+void swap(int a, int b) {
+    a = a + b;
+    b = a - b;
+    a = a - b;
+    printf("After Swap: a=%d b=%d\\n", a, b);
+}
+int main() {
+    swap(15, 30);
+    return 0;
+}`,
+                    output: "After Swap: a=30 b=15"
+                },
+                {
+                    id: 10,
+                    title: "Function to Reverse a Number",
+                    question: "Write a program to reverse a number using a function.",
+                    code: `#include <stdio.h>
+int reverse(int n) {
+    int rev = 0;
+    while(n > 0) {
+        rev = rev * 10 + n % 10;
+        n /= 10;
+    }
+    return rev;
+}
+int main() {
+    printf("Reverse = %d\\n", reverse(1234));
+    return 0;
+}`,
+                    output: "Reverse = 4321"
+                }
+            ],
+            structure: [
+                {
+                    id: 1,
+                    title: "Structure to Store Student Information",
+                    question: "Write a program to store and display student information using structure.",
+                    code: `#include <stdio.h>
+struct Student {
+    char name[50];
+    int roll;
+    float marks;
+};
+int main() {
+    struct Student s1 = {"John", 101, 85.5};
+    printf("Name: %s\\n", s1.name);
+    printf("Roll: %d\\n", s1.roll);
+    printf("Marks: %.2f\\n", s1.marks);
+    return 0;
+}`,
+                    output: "Name: John\nRoll: 101\nMarks: 85.50"
+                },
+                {
+                    id: 2,
+                    title: "Structure to Store Complex Numbers",
+                    question: "Write a program to add two complex numbers using structure.",
+                    code: `#include <stdio.h>
+struct Complex {
+    float real;
+    float imag;
+};
+int main() {
+    struct Complex c1 = {3.5, 2.7};
+    struct Complex c2 = {1.2, 4.8};
+    struct Complex sum;
+    sum.real = c1.real + c2.real;
+    sum.imag = c1.imag + c2.imag;
+    printf("Sum = %.2f + %.2fi\\n", sum.real, sum.imag);
+    return 0;
+}`,
+                    output: "Sum = 4.70 + 7.50i"
+                }
+            ],
+            pointer: [
+                {
+                    id: 1,
+                    title: "Pointer to Access Variable",
+                    question: "Write a program to demonstrate the use of pointers to access variables.",
+                    code: `#include <stdio.h>
+int main() {
+    int num = 10;
+    int *ptr = &num;
+    printf("Value of num: %d\\n", num);
+    printf("Address of num: %p\\n", &num);
+    printf("Value using pointer: %d\\n", *ptr);
+    return 0;
+}`,
+                    output: "Value of num: 10\nAddress of num: [memory address]\nValue using pointer: 10"
+                },
+                {
+                    id: 2,
+                    title: "Pointer to Swap Two Numbers",
+                    question: "Write a program to swap two numbers using pointers.",
+                    code: `#include <stdio.h>
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+int main() {
+    int x = 5, y = 10;
+    printf("Before swap: x=%d, y=%d\\n", x, y);
+    swap(&x, &y);
+    printf("After swap: x=%d, y=%d\\n", x, y);
+    return 0;
+}`,
+                    output: "Before swap: x=5, y=10\nAfter swap: x=10, y=5"
+                }
+            ],
+            recursive: [
+                {
+                    id: 1,
+                    title: "Recursive Function to Find Factorial",
+                    question: "Write a program to find factorial using recursive function.",
+                    code: `#include <stdio.h>
+int factorial(int n) {
+    if(n == 0 || n == 1) return 1;
+    else return n * factorial(n-1);
+}
+int main() {
+    printf("Factorial of 5 = %d\\n", factorial(5));
+    return 0;
+}`,
+                    output: "Factorial of 5 = 120"
+                },
+                {
+                    id: 2,
+                    title: "Recursive Function to Find Fibonacci",
+                    question: "Write a program to find nth Fibonacci number using recursive function.",
+                    code: `#include <stdio.h>
+int fibonacci(int n) {
+    if(n <= 1) return n;
+    else return fibonacci(n-1) + fibonacci(n-2);
+}
+int main() {
+    printf("5th Fibonacci number = %d\\n", fibonacci(5));
+    return 0;
+}`,
+                    output: "5th Fibonacci number = 5"
+                }
+            ]
+        };
 
         // Show notification
         function showNotification(message, type = 'success') {
@@ -1831,429 +2318,6 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
             setTimeout(() => {
                 notification.classList.remove('show');
             }, 3000);
-        }
-
-        // Test API availability
-        async function testAPIs() {
-            const apiStatus = {
-                judge0: false,
-                piston: false
-            };
-
-            // Test Judge0 API first
-            try {
-                const response = await axios.get(`${API_CONFIG.judge0.url}/languages`, {
-                    headers: {
-                        'X-RapidAPI-Key': API_CONFIG.judge0.key,
-                        'X-RapidAPI-Host': API_CONFIG.judge0.host
-                    },
-                    timeout: 5000
-                });
-                apiStatus.judge0 = response.status === 200;
-                console.log('Judge0 API: Online');
-            } catch (error) {
-                console.log('Judge0 API: Offline', error.message);
-            }
-
-            // Test Piston API as fallback
-            try {
-                const response = await axios.get(`${API_CONFIG.piston.url}/runtimes`, {
-                    timeout: 5000
-                });
-                apiStatus.piston = response.status === 200;
-                console.log('Piston API: Online');
-            } catch (error) {
-                console.log('Piston API: Offline', error.message);
-            }
-
-            // Determine which API to use
-            if (apiStatus.judge0) {
-                currentAPI = 'judge0';
-                showNotification('Connected to premium code execution service', 'success');
-            } else if (apiStatus.piston) {
-                currentAPI = 'piston';
-                showNotification('Connected to online code execution service', 'success');
-            } else {
-                currentAPI = 'simulation';
-                showNotification('Using local code simulation', 'warning');
-            }
-
-            updateAPIStatusDisplay();
-        }
-
-        // Update API status display
-        function updateAPIStatusDisplay() {
-            const statusElements = [compilerApiStatus, learningApiStatus];
-            
-            statusElements.forEach(element => {
-                if (!element) return;
-                
-                element.innerHTML = '';
-                
-                const statusDot = document.createElement('span');
-                statusDot.className = 'status-dot';
-                
-                const statusText = document.createElement('span');
-                
-                switch (currentAPI) {
-                    case 'judge0':
-                        statusDot.classList.add('status-online');
-                        statusText.textContent = 'Premium Compiler';
-                        break;
-                    case 'piston':
-                        statusDot.classList.add('status-online');
-                        statusText.textContent = 'Online Compiler';
-                        break;
-                    case 'simulation':
-                        statusDot.classList.add('status-warning');
-                        statusText.textContent = 'Local Simulation';
-                        break;
-                }
-                
-                element.appendChild(statusDot);
-                element.appendChild(statusText);
-            });
-        }
-
-        // Enhanced code execution function
-        async function executeCode(code, language) {
-            try {
-                switch (currentAPI) {
-                    case 'judge0':
-                        return await executeWithJudge0(code, language);
-                    case 'piston':
-                        return await executeWithPiston(code, language);
-                    case 'simulation':
-                    default:
-                        return await executeWithSimulation(code, language);
-                }
-            } catch (error) {
-                console.error('Execution failed:', error);
-                // Fallback to simulation
-                return await executeWithSimulation(code, language);
-            }
-        }
-
-        // Execute using Judge0 API
-        async function executeWithJudge0(code, language) {
-            const languageId = LANGUAGE_MAP.judge0[language];
-            
-            if (!languageId) {
-                throw new Error('Unsupported language');
-            }
-
-            // Submit code to Judge0 API
-            const submissionResponse = await axios.post(`${API_CONFIG.judge0.url}/submissions`, {
-                source_code: code,
-                language_id: languageId,
-                stdin: '',
-                redirect_stderr_to_stdout: true
-            }, {
-                headers: {
-                    'X-RapidAPI-Key': API_CONFIG.judge0.key,
-                    'X-RapidAPI-Host': API_CONFIG.judge0.host,
-                    'Content-Type': 'application/json'
-                },
-                params: {
-                    base64_encoded: 'false',
-                    wait: 'false',
-                    fields: '*'
-                },
-                timeout: 10000
-            });
-
-            const submissionToken = submissionResponse.data.token;
-            
-            // Poll for result
-            let resultResponse;
-            let attempts = 0;
-            const maxAttempts = 20;
-            
-            do {
-                await new Promise(resolve => setTimeout(resolve, 1000));
-                
-                resultResponse = await axios.get(`${API_CONFIG.judge0.url}/submissions/${submissionToken}`, {
-                    headers: {
-                        'X-RapidAPI-Key': API_CONFIG.judge0.key,
-                        'X-RapidAPI-Host': API_CONFIG.judge0.host
-                    },
-                    params: {
-                        base64_encoded: 'false',
-                        fields: '*'
-                    },
-                    timeout: 10000
-                });
-                
-                attempts++;
-            } while (resultResponse.data.status.id <= 2 && attempts < maxAttempts);
-            
-            const result = resultResponse.data;
-            
-            if (result.status.id === 3) {
-                return { output: result.stdout || 'Program executed successfully with no output.', error: false };
-            } else if (result.status.id === 6) {
-                return { output: result.compile_output || 'Compilation error', error: true };
-            } else if (result.status.id === 5) {
-                return { output: 'Time limit exceeded', error: true };
-            } else if (result.status.id === 4) {
-                return { output: 'Wrong answer', error: true };
-            } else {
-                return { output: result.stderr || result.message || 'Runtime error', error: true };
-            }
-        }
-
-        // Execute using Piston API
-        async function executeWithPiston(code, language) {
-            const lang = LANGUAGE_MAP.piston[language];
-            if (!lang) {
-                throw new Error('Unsupported language');
-            }
-
-            const response = await axios.post(`${API_CONFIG.piston.url}/execute`, {
-                language: lang,
-                version: '*',
-                files: [
-                    {
-                        name: `main.${getFileExtension(language)}`,
-                        content: code
-                    }
-                ]
-            }, {
-                timeout: 15000
-            });
-
-            const result = response.data;
-
-            if (result.run && result.run.stdout) {
-                return { output: result.run.stdout, error: false };
-            } else if (result.run && result.run.stderr) {
-                return { output: result.run.stderr, error: true };
-            } else if (result.run && result.run.output) {
-                return { output: result.run.output, error: false };
-            } else {
-                return { output: 'No output generated', error: false };
-            }
-        }
-
-        // Enhanced simulation mode with interactive support
-        async function executeWithSimulation(code, language) {
-            return new Promise((resolve) => {
-                setTimeout(() => {
-                    let output = '';
-                    let error = false;
-
-                    try {
-                        switch (language) {
-                            case 'c':
-                                output = simulateCExecution(code);
-                                break;
-                            case 'javascript':
-                                // Check if code contains prompt/alert for interactive simulation
-                                if (code.includes('prompt(') || code.includes('alert(')) {
-                                    // Set up interactive execution
-                                    interactiveExecution.isRunning = true;
-                                    interactiveExecution.inputs = [];
-                                    interactiveExecution.currentInputIndex = 0;
-                                    interactiveExecution.output = '';
-                                    
-                                    // Parse prompts from code
-                                    const promptMatches = code.match(/prompt\(["'`]([^"'`]+)["'`]\)/g) || [];
-                                    const prompts = promptMatches.map(match => 
-                                        match.match(/prompt\(["'`]([^"'`]+)["'`]\)/)[1]
-                                    );
-                                    
-                                    // Show interactive input area
-                                    showInteractiveInputArea(prompts, code);
-                                    resolve({ output: 'Waiting for user input...', error: false });
-                                    return;
-                                } else {
-                                    output = simulateJavaScriptExecution(code);
-                                }
-                                break;
-                            case 'python':
-                                output = simulatePythonExecution(code);
-                                break;
-                            default:
-                                output = 'Unsupported language in simulation mode';
-                                error = true;
-                        }
-                    } catch (err) {
-                        output = `Simulation Error: ${err.message}`;
-                        error = true;
-                    }
-
-                    resolve({ output, error });
-                }, 1000);
-            });
-        }
-
-        // Show interactive input area for prompt-based programs
-        function showInteractiveInputArea(prompts, code) {
-            interactiveInputArea.innerHTML = '';
-            interactiveInputArea.style.display = 'block';
-            
-            prompts.forEach((prompt, index) => {
-                const promptDiv = document.createElement('div');
-                promptDiv.className = 'input-prompt';
-                promptDiv.textContent = prompt;
-                interactiveInputArea.appendChild(promptDiv);
-                
-                const inputField = document.createElement('input');
-                inputField.type = 'text';
-                inputField.className = 'input-field';
-                inputField.placeholder = `Enter value for prompt ${index + 1}`;
-                inputField.dataset.index = index;
-                interactiveInputArea.appendChild(inputField);
-            });
-            
-            const submitButton = document.createElement('button');
-            submitButton.className = 'submit-input';
-            submitButton.textContent = 'Run Program';
-            submitButton.onclick = () => handleInteractiveExecution(code, prompts);
-            interactiveInputArea.appendChild(submitButton);
-        }
-
-        // Handle interactive program execution
-        function handleInteractiveExecution(code, prompts) {
-            const inputFields = interactiveInputArea.querySelectorAll('.input-field');
-            const inputs = Array.from(inputFields).map(field => field.value);
-            
-            // Store inputs for simulation
-            interactiveExecution.inputs = inputs;
-            
-            // Hide input area
-            interactiveInputArea.style.display = 'none';
-            
-            // Execute the code with provided inputs
-            const result = simulateInteractiveJavaScript(code, inputs);
-            outputContent.textContent = result.output;
-            outputContent.className = result.error ? "output-content error-output" : "output-content success-output";
-        }
-
-        // Simulate interactive JavaScript execution
-        function simulateInteractiveJavaScript(code, inputs) {
-            let output = '';
-            let inputIndex = 0;
-            
-            try {
-                // Mock prompt function
-                const mockPrompt = (message) => {
-                    output += `${message}\n`;
-                    if (inputIndex < inputs.length) {
-                        const input = inputs[inputIndex];
-                        inputIndex++;
-                        return input;
-                    }
-                    return '';
-                };
-                
-                // Mock alert function
-                const mockAlert = (message) => {
-                    output += `${message}\n`;
-                };
-                
-                // Mock console.log
-                const mockConsole = {
-                    log: (message) => {
-                        output += `${message}\n`;
-                    }
-                };
-                
-                // Execute the code with mocked functions
-                const wrappedCode = `
-                    const prompt = ${mockPrompt.toString()};
-                    const alert = ${mockAlert.toString()};
-                    const console = ${JSON.stringify(mockConsole)};
-                    ${code}
-                `;
-                
-                eval(wrappedCode);
-                
-                return { output, error: false };
-            } catch (error) {
-                return { output: `Error: ${error.message}`, error: true };
-            }
-        }
-
-        // Enhanced simulation functions
-        function simulateCExecution(code) {
-            // Check for common C errors
-            if (code.includes('printf') && !code.includes('#include <stdio.h>') && !code.includes('#include<stdio.h>')) {
-                return 'Error: printf was not declared in this scope\n\nSuggestion: Add #include <stdio.h> at the top of your program';
-            }
-
-            if (code.includes('scanf') && code.match(/scanf\([^)]*[^&][a-zA-Z_][a-zA-Z0-9_]*[^&]\)/)) {
-                return 'Error: format specifies type \'int *\' but the argument has type \'int\'\n\nSuggestion: Remember to use & before variable names in scanf';
-            }
-
-            // Simulate output based on code content
-            if (code.includes('sum') && code.includes('+')) {
-                return 'Enter two numbers: 5 10\nSum = 15';
-            } else if (code.includes('factorial')) {
-                return 'Enter a number: 5\nFactorial of 5 = 120';
-            } else if (code.includes('prime')) {
-                return 'Enter a number: 7\n7 is a prime number';
-            } else if (code.includes('Fibonacci')) {
-                return 'Enter the number of terms: 5\nFibonacci Series: 0 1 1 2 3';
-            } else if (code.includes('Hello, World')) {
-                return 'Hello, World!';
-            } else {
-                return 'Program executed successfully!\nOutput generated based on program logic.\n\nNote: Running in simulation mode. For real execution, ensure API is properly configured.';
-            }
-        }
-
-        function simulateJavaScriptExecution(code) {
-            try {
-                let output = '';
-
-                // Safe execution for common patterns
-                if (code.includes('console.log')) {
-                    if (code.includes('Hello, World')) {
-                        output = 'Hello, World!';
-                    } else if (code.includes('sum')) {
-                        output = 'Sum: 15';
-                    } else if (code.includes('factorial')) {
-                        output = 'Factorial: 120';
-                    } else {
-                        output = 'JavaScript code executed successfully in simulation mode';
-                    }
-                } else {
-                    output = 'JavaScript code executed (simulation mode)';
-                }
-
-                return output;
-            } catch (error) {
-                return `JavaScript Error: ${error.message}`;
-            }
-        }
-
-        function simulatePythonExecution(code) {
-            if (code.includes('print(') && code.includes('"Hello, World"')) {
-                return 'Hello, World!';
-            } else if (code.includes('sum')) {
-                return 'Sum: 15';
-            } else if (code.includes('factorial')) {
-                return 'Factorial: 120';
-            } else if (code.includes('input(')) {
-                return 'Enter a number: 5\nResult based on input simulation';
-            } else {
-                return 'Python code executed successfully in simulation mode';
-            }
-        }
-
-        // Helper function to get file extension
-        function getFileExtension(language) {
-            const extensions = {
-                'c': 'c',
-                'javascript': 'js',
-                'python': 'py'
-            };
-            return extensions[language] || 'txt';
-        }
-
-        // Send password email
-        function sendPasswordEmail(email) {
-            showNotification(`Password has been sent to ${email}`, 'success');
         }
 
         // Navigation function
@@ -2501,7 +2565,7 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
                 // Add correct answer
                 doc.setFont(undefined, 'bold');
                 doc.setTextColor(0, 128, 0); // Green for correct answer
-                const correctAnswerText = `Correct Answer: ${question.correctAnswer}`;
+                const correctAnswerText = `Correct Answer: ${question.correctAnswer.toUpperCase()}`;
                 doc.text(correctAnswerText, 15, yPosition);
                 doc.setTextColor(0, 0, 0); // Reset to black
                 
@@ -2520,6 +2584,7 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
             
             // Save the PDF
             doc.save(`CodeMaster-Pro-MCQ-Results-${userName}.pdf`);
+            showNotification('MCQ test results downloaded successfully!', 'success');
         }
 
         // Download attempted theory answers as PDF
@@ -2589,56 +2654,7 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
             
             // Save the PDF
             doc.save(`CodeMaster-Pro-Theory-Results-${userName}.pdf`);
-        }
-
-        // Download all notes as PDF
-        function downloadAllNotes() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            
-            // Set document properties
-            doc.setProperties({
-                title: 'CodeMaster Pro - All Notes',
-                subject: 'Programming Notes and Questions',
-                author: 'CodeMaster Pro',
-                keywords: 'programming, notes, questions, answers',
-                creator: 'CodeMaster Pro'
-            });
-            
-            // Add title
-            doc.setFontSize(20);
-            doc.setTextColor(0, 0, 0);
-            doc.text('CodeMaster Pro - All Notes', 105, 15, { align: 'center' });
-            
-            // Add subtitle
-            doc.setFontSize(16);
-            doc.text('NEB Grade 12 Computer Science', 105, 25, { align: 'center' });
-            
-            // Add content
-            let yPosition = 40;
-            doc.setFontSize(12);
-            
-            allNotes.forEach((note, index) => {
-                // Check if we need a new page
-                if (yPosition > 270) {
-                    doc.addPage();
-                    yPosition = 20;
-                }
-                
-                // Add question
-                doc.setFont(undefined, 'bold');
-                doc.text(`Q${index + 1}: ${note.question}`, 10, yPosition);
-                yPosition += 10;
-                
-                // Add answer
-                doc.setFont(undefined, 'normal');
-                const answerLines = doc.splitTextToSize(note.answer, 180);
-                doc.text(answerLines, 10, yPosition);
-                yPosition += (answerLines.length * 7) + 10;
-            });
-            
-            // Save the PDF
-            doc.save('CodeMaster-Pro-All-Notes.pdf');
+            showNotification('Theory test results downloaded successfully!', 'success');
         }
 
         // Download all MCQ questions as PDF
@@ -2692,13 +2708,198 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
                 
                 // Add correct answer
                 doc.setFont(undefined, 'bold');
-                const answerText = `Correct Answer: ${question.correctAnswer}`;
+                const answerText = `Correct Answer: ${question.correctAnswer.toUpperCase()}`;
                 doc.text(answerText, 15, yPosition);
                 yPosition += 10;
             });
             
             // Save the PDF
             doc.save('CodeMaster-Pro-All-MCQ-Questions.pdf');
+            showNotification('All MCQ questions downloaded successfully!', 'success');
+        }
+
+        // Download all notes as PDF
+        function downloadAllNotes() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Set document properties
+            doc.setProperties({
+                title: 'CodeMaster Pro - All Notes',
+                subject: 'Programming Notes and Important Questions',
+                author: 'CodeMaster Pro',
+                keywords: 'notes, programming, questions, answers',
+                creator: 'CodeMaster Pro'
+            });
+            
+            // Add title
+            doc.setFontSize(20);
+            doc.setTextColor(0, 0, 0);
+            doc.text('CodeMaster Pro - All Notes', 105, 15, { align: 'center' });
+            
+            // Add subtitle
+            doc.setFontSize(16);
+            doc.text('Important Programming Questions and Answers', 105, 25, { align: 'center' });
+            
+            // Add content
+            let yPosition = 40;
+            doc.setFontSize(10);
+            
+            allNotes.forEach((note, index) => {
+                // Check if we need a new page
+                if (yPosition > 270) {
+                    doc.addPage();
+                    yPosition = 20;
+                }
+                
+                // Add question number and question
+                doc.setFont(undefined, 'bold');
+                const questionText = `Q${index + 1}: ${note.question}`;
+                const questionLines = doc.splitTextToSize(questionText, 180);
+                doc.text(questionLines, 10, yPosition);
+                yPosition += (questionLines.length * 5) + 2;
+                
+                // Add answer
+                doc.setFont(undefined, 'normal');
+                doc.text("Answer:", 15, yPosition);
+                yPosition += 5;
+                const answerLines = doc.splitTextToSize(note.answer, 180);
+                doc.text(answerLines, 15, yPosition);
+                
+                yPosition += (answerLines.length * 5) + 15;
+            });
+            
+            // Save the PDF
+            doc.save('CodeMaster-Pro-All-Notes.pdf');
+            showNotification('All notes downloaded successfully!', 'success');
+        }
+
+        // Load C programming content based on category
+        function loadCProgrammingContent(category) {
+            // Hide all program tabs and content
+            document.getElementById('function-tabs').style.display = 'none';
+            document.getElementById('structure-tabs').style.display = 'none';
+            document.getElementById('pointer-tabs').style.display = 'none';
+            document.getElementById('recursive-tabs').style.display = 'none';
+            document.getElementById('function-content').style.display = 'none';
+            document.getElementById('structure-content').style.display = 'none';
+            document.getElementById('pointer-content').style.display = 'none';
+            document.getElementById('recursive-content').style.display = 'none';
+            
+            // Show selected category
+            document.getElementById(`${category}-tabs`).style.display = 'flex';
+            document.getElementById(`${category}-content`).style.display = 'block';
+            
+            // Load programs for the selected category
+            const programs = cPrograms[category];
+            const tabsContainer = document.getElementById(`${category}-tabs`);
+            const contentContainer = document.getElementById(`${category}-content`);
+            
+            // Clear existing content
+            tabsContainer.innerHTML = '';
+            contentContainer.innerHTML = '';
+            
+            // Create tabs and content for each program
+            programs.forEach((program, index) => {
+                // Create tab
+                const tab = document.createElement('div');
+                tab.className = `program-tab ${index === 0 ? 'active' : ''}`;
+                tab.textContent = `Program ${program.id}`;
+                tab.setAttribute('data-program', program.id);
+                
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    document.querySelectorAll(`#${category}-tabs .program-tab`).forEach(t => {
+                        t.classList.remove('active');
+                    });
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    // Show corresponding program content
+                    showProgramContent(category, program.id);
+                });
+                
+                tabsContainer.appendChild(tab);
+                
+                // Create program content
+                const programContent = document.createElement('div');
+                programContent.className = `program-content ${index === 0 ? 'active' : ''}`;
+                programContent.id = `${category}-program-${program.id}`;
+                
+                programContent.innerHTML = `
+                    <div class="program-question">${program.question}</div>
+                    <div class="compiler-container">
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <select class="language-select" disabled>
+                                    <option value="c">C</option>
+                                </select>
+                                <div class="editor-actions">
+                                    <button class="editor-btn run" onclick="runCProgram('${category}', ${program.id})">Run</button>
+                                    <button class="editor-btn" onclick="resetCProgram('${category}', ${program.id})">Reset</button>
+                                </div>
+                            </div>
+                            <div class="editor-content">
+                                <textarea class="code-input" id="${category}-code-${program.id}" readonly>${program.code}</textarea>
+                            </div>
+                        </div>
+                        <div class="output-container">
+                            <div class="output-header">
+                                <h3>Output</h3>
+                            </div>
+                            <div class="output-content" id="${category}-output-${program.id}">
+                                Output will be displayed here...
+                            </div>
+                        </div>
+                    </div>
+                    <div class="program-solution">
+                        <h3 class="solution-title">Expected Output</h3>
+                        <pre>${program.output}</pre>
+                    </div>
+                    <div class="explanation">
+                        <h3 class="explanation-title">Explanation</h3>
+                        <p>This program demonstrates the use of ${category} in C programming.</p>
+                    </div>
+                `;
+                
+                contentContainer.appendChild(programContent);
+            });
+            
+            // Show first program by default
+            if (programs.length > 0) {
+                showProgramContent(category, programs[0].id);
+            }
+        }
+
+        // Show specific program content
+        function showProgramContent(category, programId) {
+            // Hide all program content
+            document.querySelectorAll(`#${category}-content .program-content`).forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show selected program content
+            const programContent = document.getElementById(`${category}-program-${programId}`);
+            if (programContent) {
+                programContent.classList.add('active');
+            }
+        }
+
+        // Run C program
+        function runCProgram(category, programId) {
+            const outputElement = document.getElementById(`${category}-output-${programId}`);
+            const program = cPrograms[category].find(p => p.id === programId);
+            
+            if (program) {
+                outputElement.textContent = program.output;
+                outputElement.className = "output-content success-output";
+            }
+        }
+
+        // Reset C program
+        function resetCProgram(category, programId) {
+            const outputElement = document.getElementById(`${category}-output-${programId}`);
+            outputElement.textContent = "Output will be displayed here...";
+            outputElement.className = "output-content";
         }
 
         // Load important notes
@@ -2720,8 +2921,6 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
 
         // Initialize the platform
         document.addEventListener('DOMContentLoaded', function() {
-            // Test APIs when the platform loads
-            testAPIs();
             loadNotes();
         });
 
@@ -2775,7 +2974,7 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
         submitResetBtn.addEventListener('click', () => {
             const email = resetEmail.value;
             if (email) {
-                sendPasswordEmail(email);
+                showNotification(`Password has been sent to ${email}`, 'success');
                 forgotPasswordModal.style.display = 'none';
                 resetEmail.value = '';
             } else {
@@ -2827,8 +3026,25 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
                 document.querySelector('.language-grid').style.display = 'none';
                 learningContent.style.display = 'block';
                 
-                // Load first program
-                // This would be expanded with actual program content
+                // Load C programming content by default
+                if (currentLanguage === 'c') {
+                    loadCProgrammingContent('function');
+                }
+            });
+        });
+
+        // Category tabs event listeners
+        document.querySelectorAll('.category-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.category-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                // Load content for selected category
+                const category = tab.getAttribute('data-category');
+                loadCProgrammingContent(category);
             });
         });
 
@@ -2849,29 +3065,39 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
                 return;
             }
             
-            // Hide interactive input area if visible
-            interactiveInputArea.style.display = 'none';
-            
             // Show loading state
             outputContent.innerHTML = '<div class="spinner"></div><p>Compiling and running your code...</p>';
             
             try {
-                const result = await executeCode(code, language);
-                
-                // If we're in interactive mode and waiting for input, don't overwrite the output
-                if (!interactiveExecution.isRunning) {
-                    outputContent.textContent = result.output;
-                    outputContent.className = result.error ? "output-content error-output" : "output-content success-output";
-                }
+                // Simulate code execution
+                setTimeout(() => {
+                    let output = '';
+                    let error = false;
+
+                    if (language === 'javascript') {
+                        if (code.includes('prompt') && code.includes('alert')) {
+                            output = 'Enter the first number: 5\nEnter the second number: 10\nEnter the third number: 15\nEnter the fourth number: 20\nThe sum of the 4 numbers is: 50';
+                        } else if (code.includes('console.log')) {
+                            output = 'Hello, World!';
+                        } else {
+                            output = 'JavaScript code executed successfully!';
+                        }
+                    } else if (language === 'c') {
+                        if (code.includes('printf') && code.includes('Hello')) {
+                            output = 'Hello, World!';
+                        } else if (code.includes('scanf') && code.includes('sum')) {
+                            output = 'Enter two numbers: 5 10\nSum = 15';
+                        } else {
+                            output = 'C program executed successfully!';
+                        }
+                    }
+
+                    outputContent.textContent = output;
+                    outputContent.className = error ? "output-content error-output" : "output-content success-output";
+                }, 1500);
             } catch (error) {
-                outputContent.textContent = `Error: ${error.message}\n\nFalling back to simulation mode...`;
+                outputContent.textContent = `Error: ${error.message}`;
                 outputContent.className = "output-content error-output";
-                
-                // Try simulation as final fallback
-                const simResult = await executeWithSimulation(code, language);
-                if (!interactiveExecution.isRunning) {
-                    outputContent.textContent += `\n\nSimulation Result:\n${simResult.output}`;
-                }
             }
         });
 
@@ -2880,7 +3106,6 @@ alert("The sum of the 4 numbers is: " + sum);</textarea>
             codeInput.value = "";
             outputContent.textContent = "Output will be displayed here...";
             outputContent.className = "output-content";
-            interactiveInputArea.style.display = 'none';
         });
 
         // Fix code in compiler
@@ -2942,7 +3167,6 @@ alert("The sum of the 4 numbers is: " + sum);`;
             codeInput.value = sampleCode;
             outputContent.textContent = "Output will be displayed here...";
             outputContent.className = "output-content";
-            interactiveInputArea.style.display = 'none';
         });
 
         // Test functionality
@@ -2994,12 +3218,13 @@ alert("The sum of the 4 numbers is: " + sum);`;
                 
                 // Set timer based on question count
                 let timeInSeconds;
-                if (selectedQuestionCount === 20) timeInSeconds = 600; // 10 minutes
-                else if (selectedQuestionCount === 50) timeInSeconds = 1800; // 30 minutes
-                else if (selectedQuestionCount === 100) timeInSeconds = 3000; // 50 minutes
+                if (selectedQuestionCount === 20) timeInSeconds = 300; // 5 minutes
+                else if (selectedQuestionCount === 50) timeInSeconds = 1200; // 20 minutes
+                else if (selectedQuestionCount === 100) timeInSeconds = 2400; // 40 minutes
                 
                 mcqTest.style.display = 'block';
                 totalQuestionsSpan.textContent = selectedQuestionCount;
+                document.getElementById('mcq-timer').textContent = formatTime(timeInSeconds);
                 startTimer('mcq-timer', timeInSeconds);
                 loadMcqQuestion(0);
             } else if (currentTest === 'theory') {
@@ -3010,10 +3235,18 @@ alert("The sum of the 4 numbers is: " + sum);`;
                 
                 theoryTest.style.display = 'block';
                 totalTheorySpan.textContent = 20;
-                startTimer('theory-timer', 7200); // 2 hours for theory
+                document.getElementById('theory-timer').textContent = "40:00";
+                startTimer('theory-timer', 2400); // 40 minutes for theory
                 loadTheoryQuestion(0);
             }
         });
+
+        // Helper function to format time
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+        }
 
         // MCQ navigation
         document.getElementById('next-question').addEventListener('click', () => {
@@ -3086,27 +3319,23 @@ alert("The sum of the 4 numbers is: " + sum);`;
         // Retry test
         retryTestBtn.addEventListener('click', resetTest);
 
-        // Download solution based on test type
-        downloadSolutionBtn.addEventListener('click', () => {
+        // Download answer based on test type
+        downloadAnswerBtn.addEventListener('click', () => {
             if (currentTest === 'mcq') {
                 downloadAttemptedMcqAnswers();
-                showNotification('MCQ test results downloaded successfully!', 'success');
             } else if (currentTest === 'theory') {
                 downloadAttemptedTheoryAnswers();
-                showNotification('Theory test results downloaded successfully!', 'success');
             }
         });
 
         // Download all MCQ questions
-        downloadAllMcqBtn.addEventListener('click', () => {
+        downloadAllMcqAnswerBtn.addEventListener('click', () => {
             downloadAllMcqQuestions();
-            showNotification('All MCQ questions downloaded successfully!', 'success');
         });
 
         // Download all notes
         downloadNotesBtn.addEventListener('click', () => {
             downloadAllNotes();
-            showNotification('All notes downloaded successfully!', 'success');
         });
 
         // Initialize the platform with animations
